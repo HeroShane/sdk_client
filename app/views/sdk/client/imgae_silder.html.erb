@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <style type="text/css">
+
+</style>
+</head>
+<body>
+  <h3>image slider</h3>
+  <div class="xrk-ad">
+  </div>
+
+<!--   <xrkad data-id="eleid" data-type="1" data-class="xxx1"/> 
+  <xrkad data-id="eleid" data-type="2" data-class="xxx" />
+  <xrkad data-id="eleid" data-type="3" data-class="xxx"/>
+ -->
+  <%#= javascript_include_tag 'image_swiper_client' %>
+  <script >
+
+    if(window.XrkAd && XrkAd.init){
+        XrkAd.init({token: "LQ55zl84j-wTeC8fHsZvNg", element: ".xrk-ad"})
+    }else {
+      var version = "image_swiper_sdk";
+      var callback = function(){
+        console.info("sdk init callback ..... ")
+        if(!XrkAd || !XrkAd.init) return;
+        XrkAd.init({token: "LQ55zl84j-wTeC8fHsZvNg", element: ".xrk-ad"})
+      };
+      (function(){
+        var script = document.createElement('script'); 
+        script.type  = 'text/javascript';
+        script.async = true;
+        script.src   = "http://localhost:8000/js/" + version + ".js";
+        var entry = document.getElementsByTagName('script')[0];
+        entry.parentNode.insertBefore(script, entry);
+
+        if (script.addEventListener)
+          script.addEventListener('load', callback, false);
+        else {
+          script.attachEvent('onreadystatechange', function() {
+            if (/complete|loaded/.test(script.readyState)) callback();
+          });
+        }
+      })()
+    } // end else    
+
+  </script>
+
+</body>
+</html>
